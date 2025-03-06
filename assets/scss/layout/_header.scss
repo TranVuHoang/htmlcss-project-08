@@ -1,6 +1,8 @@
 /*--------------------------------------------
 # header styling
 ---------------------------------------------*/
+@use "../abstracts";
+
 .header {
   background: var(--Background-3, #eee);
 }
@@ -8,12 +10,41 @@
 .top-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 30px 0;
+
+  @include abstracts.screen(lg) {
+    padding: 24px 0;
+  }
+
+  @include abstracts.screen(sm) {
+    padding: 16px 0;
+    justify-content: space-between;
+  }
+
+  &__more {
+    display: none;
+
+    &-icon {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      padding: 4px 6px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @include abstracts.screen(lg) {
+      display: block;
+    }
+  }
 }
 
 .navbar {
   margin-left: 144px;
+
+  @include abstracts.screen(lg) {
+    display: none;
+  }
 
   &__list {
     display: flex;
@@ -35,7 +66,12 @@
 .top-cta {
   display: flex;
   align-items: center;
+  margin-left: auto;
   gap: 20px;
+
+   @include abstracts.screen(sm) {
+      margin-left: 0;
+    }
 
   &__group {
     display: flex;
@@ -46,6 +82,16 @@
     border-radius: 8px;
     background: var(--Secondary-Color-Background, #fff);
     box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+    
+    @include abstracts.screen(sm) {
+      display: none;
+    }
+  }
+
+  &__group--single {
+    @include abstracts.screen(lg) {
+      display: none;
+    }
   }
 
   &__group--single &__btn {
@@ -78,8 +124,7 @@
     height: 50px;
     display: block;
     border-radius: 8px;
-    background: lightgray -205.145px -22.64px / 819.939% 546.626%,
-      #dfd2fa;
+    background: lightgray -205.145px -22.64px / 819.939% 546.626%, #dfd2fa;
     box-shadow: 0px 4px 14px 2px #00000014;
   }
 }
